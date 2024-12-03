@@ -296,3 +296,26 @@ document.addEventListener('mousemove', (e) => {
     cursorText.style.display = 'block';  // Torna o texto visível enquanto o mouse se move
   });
   
+
+  // Função para atualizar o contador de visitas
+function updateVisitCount() {
+    // Recupera o número de visitas do localStorage
+    let visitCount = localStorage.getItem('visitCount');
+
+    // Se não houver valor no localStorage, inicia com 1
+    if (visitCount === null) {
+        visitCount = 1;
+    } else {
+        // Se houver, incrementa o contador
+        visitCount = parseInt(visitCount) + 1;
+    }
+
+    // Salva o valor atualizado no localStorage
+    localStorage.setItem('visitCount', visitCount);
+
+    // Exibe o contador de visitas na página
+    document.querySelector('#visit-count').innerText = visitCount;
+}
+
+// Chama a função para atualizar o contador
+updateVisitCount();
